@@ -1,3 +1,7 @@
+/*
+    A class which contains all the constants data types.
+    Every constants required in the project goes into this file.
+*/
 public class Constants {
     static String WelcomeMessage = "*********** Welcome to the metric conversion system ***********.\nPlease enter any key to continue.";
     static String ValueToConvertMessage = "Please enter any value which you want to convert!";

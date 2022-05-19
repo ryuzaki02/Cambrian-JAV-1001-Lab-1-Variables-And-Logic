@@ -1,9 +1,14 @@
 import java.util.Scanner;
 
+// This class holds all the logic to convert desired metric with help of user inputs. 
 public class MetricConversion {
 
+    // tryAgain :- This boolena variable checks whether it's a fresh start or user has entered try again.
     private Boolean tryAgain = false;
-
+    /*
+        This enum holds all the metric coversion available in the system.
+        Add more values to it to reflect more conversion to user.
+    */
     private enum MetricOptions {
         KmToMil(Constants.KmToMil, 1),
         MilToKm(Constants.MilToKm, 2),
@@ -23,20 +28,23 @@ public class MetricConversion {
         private String stringValue;
         private int intValue;
 
+        // Initialiser of enum value
+        // toString: A string value of enum.
+        // value: An integer value of enum.
         private MetricOptions(String toString, int value) {
             stringValue = toString;
             intValue = value;
         }
 
+        // Provides desired string and integer value of enum for computation purposes.
         @Override
         public String toString() {
             return stringValue;
         }
 
-        public int toInt() {
-            return intValue;
-        }
-
+        // Map user input integer to MetricOptions for computation purposes. 
+        /// Returns MetricOptions variable.
+        // metricValue: An integer value which maps itself to particular enum case.
         public static MetricOptions getMetric(int metricValue) {
             for (MetricOptions option : MetricOptions.values()) {
                 if (option.intValue == metricValue) {
@@ -47,36 +55,52 @@ public class MetricConversion {
         }
     }
 
+    // This method takes user inputs and convert it to desired selected metric by user.
+    // Does not return anything
     void startMetricConversion() {
         try (Scanner scanner = new Scanner(System.in)) {
+            // Checks whether it's fresh start or try again.
             if (!tryAgain) {
+                // This only excutes if it's fresh start.
+                // Shows welcome message and ask user to enter any key to continue execution.
                 System.out.println(
                         Constants.WelcomeMessage);
                 scanner.nextLine();
             }
+            // Asks user to enter value to convert.
             System.out.println(Constants.ValueToConvertMessage);
             double enteredValue = scanner.nextDouble();
             System.out.println("\n");
             String inpuString = Constants.AvailableMetricsMessage;
+            // This loop shows all the available metric options to user.
+            // It iterates through all the values of enum and append to input string.
             for (MetricOptions metric : MetricOptions.values()) {
                 inpuString += "\n" + metric.intValue + ". " + metric.stringValue;
             }
             System.out.println(inpuString);
             System.out.println("\n");
+            // This asks for option selection from user.
             System.out.println(Constants.OptionSelectionMessage);
             int selectedOption = scanner.nextInt();
             System.out.println("\n");
+            // Converts user selected option to particular MetricOptions value for further metric conversion.
             MetricOptions selectedMetricOption = MetricOptions.getMetric(selectedOption);
+            // Checks whether user has entered value from the options given or not.
             String convertedString = selectedMetricOption == null ? Constants.OptionNotAvailableMessage
                     : getConvertedValue(selectedMetricOption, enteredValue);
+            // If user selected available option then it shows actual conversion. Otherwise, shows message to select again.       
             System.out.println("=> " + convertedString + "\n");
             scanner.nextLine();
+            // This will re-iterate the whole function for next selection.
             tryAgain(scanner);
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
+    // Function to re-iterate whole metric conversion on the basis of user input.
+    // Asks "Y": To enter more values, and "N" : To quit.
+    // If user enters any other value, it calls itself.
     private void tryAgain(Scanner scanner) {
         System.out.println(Constants.TryAgainMessage);
         String tryAgainInput = scanner.nextLine();
@@ -91,6 +115,9 @@ public class MetricConversion {
         }
     }
 
+    // This function is the core of Metric coversion
+    // Holds all the mathematical conversions and formulae
+    // Switch cases use to detect user input and convert it to desired result
     private String getConvertedValue(MetricOptions metricOption, double enteredValue) {
         double convertedValue;
         switch (metricOption) {
