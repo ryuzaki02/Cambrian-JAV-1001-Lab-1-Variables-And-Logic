@@ -1,4 +1,11 @@
 /*
+    Name - Aman Thakur
+    Student Number - A00257629
+    Program - JAV-1001 - 50733 - App Development for Android - 202205 - 001
+    Lab - 1 - Variables and Logic
+*/
+
+/*
     A class which contains all the constants data types.
     Every constants required in the project goes into this file.
 */
@@ -13,12 +20,12 @@ public class Constants {
     static String EqualsTo = " equals to ";
     static String KmToMil = "KMs To Miles";
     static String MilToKm = "Miles To KMs";
-    static String CmToInch = "CMs To Inches";
-    static String InchToCm = "Inches To CMs";
+    static String CmToInch = "Centimeters To Inches";
+    static String InchToCm = "Inches To Centimeters";
     static String KgToLb = "KGs To Lbs";
     static String LbToKg = "Lbs To KGs";
-    static String GmToOz = "GMs To Ounces";
-    static String OzToGm = "Ounces To GMs";
+    static String GmToOz = "Grams To Ounces";
+    static String OzToGm = "Ounces To Grams";
     static String CelToF = "Celcius To Fahrenheit";
     static String CelToK = "Celcius To Kelvin";
     static String FToCel = "Fahrenheit To Celcius";
@@ -36,6 +43,6 @@ public class Constants {
     static String Kelvin = "K";
     static String Ltr = "Ltr";
     static String Cup = "Cup";
-    static String CM = "CM";
-    static String GM = "GM";
+    static String CM = "Centimeter";
+    static String GM = "Gram";
 }

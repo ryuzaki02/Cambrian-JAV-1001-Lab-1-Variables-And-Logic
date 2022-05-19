@@ -1,14 +1,23 @@
+/*
+    Name - Aman Thakur
+    Student Number - A00257629
+    Program - JAV-1001 - 50733 - App Development for Android - 202205 - 001
+    Lab - 1 - Variables and Logic
+*/
+
 import java.util.Scanner;
 
 // This class holds all the logic to convert desired metric with help of user inputs. 
 public class MetricConversion {
 
-    // tryAgain :- This boolena variable checks whether it's a fresh start or user has entered try again.
+    // tryAgain :- This boolena variable checks whether it's a fresh start or user
+    // has entered try again.
     private Boolean tryAgain = false;
+
     /*
-        This enum holds all the metric coversion available in the system.
-        Add more values to it to reflect more conversion to user.
-    */
+     * This enum holds all the metric coversion available in the system.
+     * Add more values to it to reflect more conversion to user.
+     */
     private enum MetricOptions {
         KmToMil(Constants.KmToMil, 1),
         MilToKm(Constants.MilToKm, 2),
@@ -42,7 +51,7 @@ public class MetricConversion {
             return stringValue;
         }
 
-        // Map user input integer to MetricOptions for computation purposes. 
+        // Map user input integer to MetricOptions for computation purposes.
         /// Returns MetricOptions variable.
         // metricValue: An integer value which maps itself to particular enum case.
         public static MetricOptions getMetric(int metricValue) {
@@ -55,7 +64,8 @@ public class MetricConversion {
         }
     }
 
-    // This method takes user inputs and convert it to desired selected metric by user.
+    // This method takes user inputs and convert it to desired selected metric by
+    // user.
     // Does not return anything
     void startMetricConversion() {
         try (Scanner scanner = new Scanner(System.in)) {
@@ -83,12 +93,14 @@ public class MetricConversion {
             System.out.println(Constants.OptionSelectionMessage);
             int selectedOption = scanner.nextInt();
             System.out.println("\n");
-            // Converts user selected option to particular MetricOptions value for further metric conversion.
+            // Converts user selected option to particular MetricOptions value for further
+            // metric conversion.
             MetricOptions selectedMetricOption = MetricOptions.getMetric(selectedOption);
             // Checks whether user has entered value from the options given or not.
             String convertedString = selectedMetricOption == null ? Constants.OptionNotAvailableMessage
                     : getConvertedValue(selectedMetricOption, enteredValue);
-            // If user selected available option then it shows actual conversion. Otherwise, shows message to select again.       
+            // If user selected available option then it shows actual conversion. Otherwise,
+            // shows message to select again.
             System.out.println("=> " + convertedString + "\n");
             scanner.nextLine();
             // This will re-iterate the whole function for next selection.
