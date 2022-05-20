@@ -17,6 +17,7 @@ public class Constants {
     static String OptionNotAvailableMessage = "OOPS. Selected option is not available.";
     static String TryAgainMessage = "Do you want to try any other option? (Y/N)";
     static String InvalidOptionMessage = "Invalid Option. Try again.\n";
+    static String InvalidInput = "Please enter numeric value!!!!";
     static String EqualsTo = " equals to ";
     static String KmToMil = "KMs To Miles";
     static String MilToKm = "Miles To KMs";

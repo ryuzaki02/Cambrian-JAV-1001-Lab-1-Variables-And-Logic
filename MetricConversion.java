@@ -80,6 +80,7 @@ public class MetricConversion {
             // Asks user to enter value to convert.
             System.out.println(Constants.ValueToConvertMessage);
             double enteredValue = scanner.nextDouble();
+            scanner.nextLine();
             System.out.println("\n");
             String inpuString = Constants.AvailableMetricsMessage;
             // This loop shows all the available metric options to user.
@@ -106,7 +107,11 @@ public class MetricConversion {
             // This will re-iterate the whole function for next selection.
             tryAgain(scanner);
         } catch (Exception e) {
-            System.out.println(e);
+            if (e.toString().equals("java.util.InputMismatchException")) {
+                System.out.println(Constants.InvalidInput);
+            } else {
+                System.out.println(e.toString());
+            }
         }
     }
 
